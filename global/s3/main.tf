@@ -28,3 +28,12 @@ resource "aws_s3_bucket_public_access_block" "public_access" {
   ignore_public_acls = true
   restrict_public_buckets = true
 }
+
+terraform {
+  backend "s3" {
+    key = "global/s3/terraform.tfstate"
+    bucket = "son-vp-terraform-up-and-running-state"
+    encrypt = true
+    use_lockfile   = true 
+  }
+}

@@ -14,7 +14,7 @@ resource "aws_lb_listener_rule" "asg" {
 
 resource "aws_lb_listener" "http" {
   load_balancer_arn = aws_lb.example.arn
-  port = 80
+  port = local.http_port
   protocol = "HTTP"
   default_action {
     type = "fixed-response"

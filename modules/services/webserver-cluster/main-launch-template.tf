@@ -2,7 +2,7 @@
 resource "aws_launch_template" "example" {
   name_prefix   = "example-lt-"
   image_id      = "ami-097f32b3a493c5a96"
-  instance_type = "t3.micro"
+  instance_type = var.instance_type
 
   vpc_security_group_ids = [aws_security_group.instance.id]
 

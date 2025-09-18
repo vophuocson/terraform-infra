@@ -1,6 +1,6 @@
 
 resource "aws_security_group" "instance" {
-  name = "terraform-example-instance"
+  name = "${var.cluster_name}-instance"
   ingress {
     from_port = var.server_port
     to_port = var.server_port
@@ -10,7 +10,7 @@ resource "aws_security_group" "instance" {
 }
 
 resource "aws_security_group" "alb" {
-  name = "terraform-example-alb"
+  name = "${var.cluster_name}-alb"
   ingress {
     from_port = 80
     to_port = 80

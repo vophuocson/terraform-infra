@@ -27,7 +27,7 @@ resource "aws_lb_listener" "http" {
 }
 
 resource "aws_lb_target_group" "asg" {
-  name = "terraform-asg-example"
+  name = "${var.cluster_name}-example"
   port = var.server_port
   protocol = "HTTP"
   vpc_id = data.aws_vpc.default.id
@@ -43,7 +43,7 @@ resource "aws_lb_target_group" "asg" {
 }
 
 resource "aws_lb" "example" {
-  name = "terraform-asg-example"
+  name = "${var.cluster_name}-example"
   load_balancer_type = "application"
   subnets = data.aws_subnets.default.ids
   security_groups = [ aws_security_group.alb.id ]

@@ -11,6 +11,12 @@ module "webserver_cluster" {
   instance_type = "t3.micro"
 }
 
+module "users" {
+  source = "../../../modules/landing-zone/iam-user"
+  count = length(var.user_names)
+  user_name = var.user_names[count.index]
+}
+
 resource "aws_security_group_rule" "allow_testing_inbound" {
   type = "ingress"
   security_group_id = module.webserver_cluster.alb_security_group_id

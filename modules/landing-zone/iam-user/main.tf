@@ -3,10 +3,6 @@ provider "aws" {
 }
 
 resource "aws_iam_user" "example" {
-  # using count for variable
-  # count = length(var.user_names)
-  # name = var.user_names[count.index]
-
-  # using the count that to module
-  name = var.user_name
+  for_each = toset(var.user_names)
+  name = each.value
 }

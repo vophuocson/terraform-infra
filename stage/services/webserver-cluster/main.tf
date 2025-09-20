@@ -4,7 +4,7 @@ provider "aws" {
 module "webserver_cluster" {
   source = "../../../modules/services/webserver-cluster"
   cluster_name = "stage"
-  db_remote_state_bucket = "stage-terraform-up-and-running-state"
+  db_remote_state_bucket = "son-vp-stage-terraform-up-and-running-state"
   db_remote_state_key = "stage/services/webserver-cluster/terraform.tfstate"
   min_size = 1
   max_size = 2
@@ -13,8 +13,7 @@ module "webserver_cluster" {
 
 module "users" {
   source = "../../../modules/landing-zone/iam-user"
-  count = length(var.user_names)
-  user_name = var.user_names[count.index]
+  user_names = var.user_names
 }
 
 resource "aws_security_group_rule" "allow_testing_inbound" {
@@ -28,8 +27,8 @@ resource "aws_security_group_rule" "allow_testing_inbound" {
 
 terraform {
   backend "s3" {
-    bucket = "stage-terraform-up-and-running-state"
-    key = "stage/services/webserver-cluster/terraform.tfstate"
+    bucket = "stage-son-vp-terraform-up-and-running-state"
+    key = "services/webserver-cluster/terraform.tfstate"
     encrypt = true
     use_lockfile   = true 
     region = "ap-southeast-1"

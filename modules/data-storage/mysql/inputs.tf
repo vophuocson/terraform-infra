@@ -9,3 +9,4 @@ variable "db_password" {
   sensitive = true
   description = "The password for the database"
 }
+

@@ -1,9 +1,8 @@
-output "address" {
-  value = aws_db_instance.example.address
-  description = "Connect to the database at this endpoint"
+output "db_port" {
+  value = module.mysql_db.port
+  description = "the port of db_instance"
 }
 
-output "port" {
-  value = aws_db_instance.example.port
-  description = "The port the database is listening on"
+output "address" {
+  value = module.mysql_db.address
 }

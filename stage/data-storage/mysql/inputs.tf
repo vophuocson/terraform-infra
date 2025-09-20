@@ -1,4 +1,4 @@
-variable "db_user_name" {
+variable "db_username" {
   type = string
   description = "the user name of db instance"
 }

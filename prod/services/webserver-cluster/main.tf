@@ -9,6 +9,7 @@ module "webserver_cluster" {
   min_size = 1
   max_size = 2
   instance_type = "t3.micro"
+  enable_autoscaling = true
 }
 
 terraform {

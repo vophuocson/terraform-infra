@@ -9,12 +9,13 @@ module "webserver_cluster" {
   min_size = 1
   max_size = 2
   instance_type = "t3.micro"
+  enable_autoscaling = false
 }
 
-module "users" {
-  source = "../../../modules/landing-zone/iam-user"
-  user_names = var.user_names
-}
+# module "users" {
+#   source = "../../../modules/landing-zone/iam-user"
+#   user_names = var.user_names
+# }
 
 resource "aws_security_group_rule" "allow_testing_inbound" {
   type = "ingress"

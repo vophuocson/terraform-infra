@@ -34,7 +34,10 @@ variable "max_size" {
   type = number
 }
 
-
+variable "enable_autoscaling" {
+  type = bool
+  description = "If set to True, enable autoscaling"
+}
 data "aws_vpc" "default" {
   default = true
 }

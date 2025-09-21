@@ -1,7 +1,7 @@
 
 resource "aws_launch_template" "example" {
   name_prefix   = "example-lt-"
-  image_id      = "ami-097f32b3a493c5a96"
+  image_id      = var.ami
   instance_type = var.instance_type
 
   vpc_security_group_ids = [aws_security_group.instance.id]
@@ -10,6 +10,7 @@ resource "aws_launch_template" "example" {
     server_port = var.server_port
     db_address = data.terraform_remote_state.db.outputs.address
     db_port = data.terraform_remote_state.db.outputs.port
+    server_text = var.server_text
   }))
   
   lifecycle {

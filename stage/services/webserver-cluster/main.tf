@@ -3,6 +3,7 @@ provider "aws" {
 }
 module "webserver_cluster" {
   source = "../../../modules/services/webserver-cluster"
+  ami =  "ami-097f32b3a493c5a96"
   cluster_name = "stage"
   db_remote_state_bucket = "son-vp-stage-terraform-up-and-running-state"
   db_remote_state_key = "stage/services/webserver-cluster/terraform.tfstate"
@@ -11,6 +12,7 @@ module "webserver_cluster" {
   instance_type = "t3.micro"
   enable_autoscaling = false
 }
+
 
 # module "users" {
 #   source = "../../../modules/landing-zone/iam-user"

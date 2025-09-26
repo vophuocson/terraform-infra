@@ -69,7 +69,7 @@ locals {
 variable "ami" {
   description = "The AMI to run in the cluster"
   type = string
-  # default = "ami-0fb653ca2d3203ac1"
+  default = "ami-097f32b3a493c5a96"
 }
 
 variable "server_text" {

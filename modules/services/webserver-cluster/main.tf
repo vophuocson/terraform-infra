@@ -1,4 +1,5 @@
 resource "aws_autoscaling_group" "example" {
+  name = "${var.cluster_name}-${aws_launch_template.example.name}"
   min_size = var.min_size
   max_size = var.max_size
   launch_template {
@@ -12,6 +13,10 @@ resource "aws_autoscaling_group" "example" {
     key = "${var.cluster_name}"
     value = "terraform-asg-example"
     propagate_at_launch = true
+  }
+  min_elb_capacity = var.min_size
+  lifecycle {
+    create_before_destroy = true
   }
 }
 

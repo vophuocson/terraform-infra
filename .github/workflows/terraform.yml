@@ -19,7 +19,7 @@ jobs:
 
       - uses: aws-actions/configure-aws-credentials@v1
         with:
-          role-to-assume: arn:aws:iam::860559800466:role/auth_role
+          role-to-assume: arn:aws:iam::860559800466:role/AuthenticationRole
           aws-region: ap-southeast-1
 
       # Run Terraform using HashiCorp's setup-terraform Action

@@ -11,6 +11,9 @@ on:
 jobs:
   TerraformApply:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./stage/services/webserver-cluster
     steps:
       - uses: actions/checkout@v2
 

@@ -1,34 +1,34 @@
-permissions:
-  id-token: write
-name: Terraform Apply
+# permissions:
+#   id-token: write
+# name: Terraform Apply
 
-# Only run this workflow on commits to the main branch
-on:
-  push:
-    branches:
-      - "main"
+# # Only run this workflow on commits to the main branch
+# on:
+#   push:
+#     branches:
+#       - "main"
 
-jobs:
-  TerraformApply:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./stage/services/webserver-cluster
-    steps:
-      - uses: actions/checkout@v2
+# jobs:
+#   TerraformApply:
+#     runs-on: ubuntu-latest
+#     defaults:
+#       run:
+#         working-directory: ./stage/services/webserver-cluster
+#     steps:
+#       - uses: actions/checkout@v2
 
-      - uses: aws-actions/configure-aws-credentials@v1
-        with:
-          role-to-assume: arn:aws:iam::860559800466:role/AuthenticationRole
-          aws-region: ap-southeast-1
+#       - uses: aws-actions/configure-aws-credentials@v1
+#         with:
+#           role-to-assume: arn:aws:iam::860559800466:role/AuthenticationRole
+#           aws-region: ap-southeast-1
 
-      # Run Terraform using HashiCorp's setup-terraform Action
-      - uses: hashicorp/setup-terraform@v1
-        with:
-          terraform_version: 1.13.3
-          terraform_wrapper: false
+#       # Run Terraform using HashiCorp's setup-terraform Action
+#       - uses: hashicorp/setup-terraform@v1
+#         with:
+#           terraform_version: 1.13.3
+#           terraform_wrapper: false
 
-      - name: Terraform Init & Apply
-        run: |
-          terraform init
-          terraform apply -auto-approve
+#       - name: Terraform Init & Apply
+#         run: |
+#           terraform init
+#           terraform apply -auto-approve

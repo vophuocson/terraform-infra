@@ -4,8 +4,6 @@ provider "aws" {
 
 module "mysql_db" {
   source = "../../../modules/data-storage/mysql"
-  db_username = var.db_username
-  db_password = var.db_password
   engine_type = "mysql"
   storage_size = 10
   instance_class = "db.t3.micro"

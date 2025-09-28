@@ -1,15 +1,3 @@
-variable "db_username" {
-  description = "The username for the database"
-  sensitive = true
-  type = string
-}
-
-variable "db_password" {
-  type = string
-  sensitive = true
-  description = "The password for the database"
-}
-
 variable "engine_type" {
   type = string
   description = "the engine runing db"
@@ -28,4 +16,12 @@ variable "instance_class" {
 variable "skip_final_snapshot" {
   type = bool
   default = true
+}
+
+data "aws_secretsmanager_secret_version" "creds" {
+  secret_id = "db-creds"
+}
+
+locals {
+  db_creds = jsondecode(data.aws_secretsmanager_secret_version.creds.secret_string)
 }
